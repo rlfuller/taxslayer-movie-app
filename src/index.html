@@ -18,11 +18,13 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    <base href="/">
   </head>
 
 
-  <body ng-app="app">
-    <app>Loading...</app>
+  <body ng-app="movieApp">
+    <ng-view></ng-view>
+    
   </body>
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->
