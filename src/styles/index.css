@@ -1,3 +1,34 @@
 body {
   /*background-color: lightgrey; */
 }
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 7px 0 10px 7px;
+  pointer-events: none;
+}
+
+.left-addon .glyphicon { left: 0px;}
+.right-addon .glyphicon { right: 0px;}
+
+.left-addon input { padding-left: 25px;}
+.right-addon th { padding-right: 30px;}
+
+
+.delete {
+  color: red;
+  cursor: pointer;
+}
+
+.sort {
+  float: right;
+}
+
+input {
+  border-radius: 25px;
+  width: 300px;
+}

@@ -1,11 +1,16 @@
 (function () {
     var movieData = function ($http) {
+        var apiBase = "https://moviedb-9c6cb.firebaseio.com";
         var getMovies = function(){
-            return $http.get("https://moviedb-9c6cb.firebaseio.com/movie.json");
+            return $http.get(apiBase + "/movie.json");
+        };
+        var deleteMovie = function(id) {
+            return $http.delete(apiBase + "/movie/" + id + ".json");
         };
 
         return {
-            getMovies: getMovies
+            getMovies: getMovies,
+            deleteMovie: deleteMovie
         };
 
     };

@@ -1,26 +1,30 @@
 
 
+<div class="inner-addon left-addon">
+    <span class="glyphicon glyphicon-search"></span>
+    <input type="text" placeholder="search" ng-model="movieFilter.name">
+</div>
 
-<input type="text" placeholder="search" ng-model="movieFilter.name">
-<br>
-<br>
 
 <table class="table table-striped">
    <thead>
        <tr>
-           <th>Title</th>
+           <th data-ng-click="doSort('name')">Title<span class="sort"><i class="glyphicon glyphicon-sort"></i></span></th>
            <th>Year</th>
            <th>Director</th>
            <th>Run Time</th>
+           <th></th>
         </tr>
+
    </thead>
    <tbody>
-       <tr ng-repeat="movie in movies | objectToArray | filter: movieFilter">
+       <tr ng-repeat="movie in movies | filter: movieFilter | orderBy: sortBy:reverse">
            <td>{{movie.name}}</td>
            <td>{{movie.releaseDt | date: "yyyy"}}</td>
            <td>{{movie.director}}</td>
            <td>{{movie.length | formatMovieLength}}</td>
+           <td><i class="glyphicon glyphicon-minus-sign delete" data-ng-click="deleteMovie(movie)"></i></td>
        </tr>
    </tbody>
     
-</table>
+</table> 
