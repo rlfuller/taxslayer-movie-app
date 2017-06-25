@@ -1,1 +1,26 @@
-<div>Rachel is here</div>
+
+
+
+<input type="text" placeholder="search" ng-model="movieFilter.name">
+<br>
+<br>
+
+<table class="table table-striped">
+   <thead>
+       <tr>
+           <th>Title</th>
+           <th>Year</th>
+           <th>Director</th>
+           <th>Run Time</th>
+        </tr>
+   </thead>
+   <tbody>
+       <tr ng-repeat="movie in movies | objectToArray | filter: movieFilter">
+           <td>{{movie.name}}</td>
+           <td>{{movie.releaseDt | date: "yyyy"}}</td>
+           <td>{{movie.director}}</td>
+           <td>{{movie.length | formatMovieLength}}</td>
+       </tr>
+   </tbody>
+    
+</table>

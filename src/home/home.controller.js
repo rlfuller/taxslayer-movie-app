@@ -1,5 +1,5 @@
 (function () {
-    var homeController = function ($scope, movieData) {
+    var homeController = function ($scope, $log, movieData) {
 
     function init () {
         movieData.getMovies()
@@ -17,5 +17,5 @@
     };
   
     angular.module("movieApp")
-        .controller("homeController", ["$scope", "movieData", homeController]);
+        .controller("homeController", ["$scope", "$log", "movieData", homeController]);
 })();
