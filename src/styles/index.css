@@ -28,7 +28,28 @@ body {
   float: right;
 }
 
-input {
+#search {
   border-radius: 25px;
   width: 300px;
+}
+
+.add-movie-form {
+  width: 80%;
+}
+
+#hours {
+  width: 30%;
+  display: inline;
+}
+
+#minutes {
+  width: 30%;
+  display: inline;
+  margin-left: 20px;
+}
+
+.buttons {
+  padding-right: 50px;
+  margin-top: 30px;
+  float: right;
 }

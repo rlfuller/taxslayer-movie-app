@@ -8,6 +8,10 @@
     controller: "homeController",
     templateUrl: "home/home.view.html"
   })
+  .when("/add-movie", {
+    controller: "addMovieController",
+    templateUrl: "addMovie/addMovie.view.html"  
+  })
   .otherwise({redirectTo: "/"});
     $locationProvider.html5Mode(true).hashPrefix("");
   };
