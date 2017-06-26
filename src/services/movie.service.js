@@ -8,9 +8,19 @@
             return $http.delete(apiBase + "/movie/" + id + ".json");
         };
 
+        var addMovie = function(data) {
+            return $http.post(apiBase + "/movie.json", data);
+        }
+
+        var handleMovieDataError = function(data, status, headers, config) {
+            $log.log(data.error + " " + status);
+        }
+
         return {
             getMovies: getMovies,
-            deleteMovie: deleteMovie
+            deleteMovie: deleteMovie,
+            addMovie: addMovie,
+            handleMovieDataError: handleMovieDataError
         };
 
     };

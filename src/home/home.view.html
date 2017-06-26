@@ -1,31 +1,34 @@
 
 <span><a href="/add-movie"><i class="glyphicon glyphicon-plus-sign"></i></a></span>
 
-<div class="inner-addon left-addon">
-    <span class="glyphicon glyphicon-search"></span>
-    <input type="text" placeholder="search" ng-model="movieFilter.name" id="search">
-</div>
+<div class="movies-list">
+    <div class="inner-addon left-addon">
+        <span class="glyphicon glyphicon-search"></span>
+        <input type="text" placeholder="search" ng-model="movieFilter.name" id="search">
+    </div>
 
 
-<table class="table table-striped">
-   <thead>
-       <tr>
-           <th data-ng-click="doSort('name')">Title<span class="sort"><i class="glyphicon glyphicon-sort"></i></span></th>
-           <th>Year</th>
-           <th>Director</th>
-           <th>Run Time</th>
-           <th></th>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th data-ng-click="doSort('name')">Title<span class="sort"><i class="glyphicon glyphicon-sort"></i></span></th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Run Time</th>
+            <th></th>
+            </tr>
+
+    </thead>
+    <tbody>
+        <tr ng-repeat="movie in movies | filter: movieFilter | orderBy: sortBy:reverse">
+            <td>{{movie.name}}</td>
+            <td>{{movie.releaseDt | date: "yyyy"}}</td>
+            <td>{{movie.director}}</td>
+            <td>{{movie.length | formatMovieLength}}</td>
+            <td><i class="glyphicon glyphicon-minus-sign delete" data-ng-click="deleteMovie(movie)"></i></td>
         </tr>
-
-   </thead>
-   <tbody>
-       <tr ng-repeat="movie in movies | filter: movieFilter | orderBy: sortBy:reverse">
-           <td>{{movie.name}}</td>
-           <td>{{movie.releaseDt | date: "yyyy"}}</td>
-           <td>{{movie.director}}</td>
-           <td>{{movie.length | formatMovieLength}}</td>
-           <td><i class="glyphicon glyphicon-minus-sign delete" data-ng-click="deleteMovie(movie)"></i></td>
-       </tr>
-   </tbody>
-    
+    </tbody>
+        
 </table> 
+
+</div>

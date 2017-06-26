@@ -1,8 +1,8 @@
 
 
 
-<div class="container add-movie-form">
-    <form action="/add-movie" method="POST">
+<div class="add-movie-form">
+    <form ng-submit="onSubmit($event)">
         
         <div class="row">
             <div class="col-md-4">
@@ -26,24 +26,24 @@
         
         
         <div class="row">
+            
             <div class="col-md-4">
                 <!--<label for="name">Title</label>-->
-                <input class="form-control" type="text" placeholder="movie name" name="name" id="name">
+                <input class="form-control" type="text" placeholder="movie name" required name="name" id="name" ng-model="formData.name">
             </div>
             <div class="col-md-1">
               <!--  <label for="year">Year </label>-->
-                <select id="year" name="year" class="form-control"></select>
+                <select id="year" name="year" class="form-control" ng-options="year for year in years" ng-model="formData.year">
+                </select>
             </div>
             <div class="col-md-4">
              <!--   <label for="director">Director</label> -->
-                <input class="form-control" type="text" placeholder="director" name="director" id="director">
+                <input class="form-control" type="text" placeholder="director" name="director" id="director" ng-model="formData.director">
             </div>
             <div class="col-md-3">
               <!--  <label for="hours">Run Time </label> -->
-                <input class="form-control" type="number" name="hours" id="hours" min="0">hr
-                <input class="form-control" type="number" name="minutes" id="minutes" min="0" max="59">min
-                
-
+                <input class="form-control" type="number" name="hours" id="hours" min="0" ng-model="formData.hours"> hr
+                <input class="form-control" type="number" name="minutes" id="minutes" min="0" max="59" ng-model="formData.minutes"> min
             </div>
             
 
@@ -51,8 +51,8 @@
         </div>
         
         <div class="form-group form-inline buttons">    
-            <button class="btn btn-primary" type="submit" value="Cancel" id="cancel">Cancel</button>
-            <button class="btn btn-primary" type="submit" value="Save" id="submit">Save</button>
+            <button class="btn btn-primary" value="Cancel" id="cancel" ng-click="cancelForm($event)">Cancel</button>
+            <button class="btn btn-primary" value="Save" id="submit">Save</button>
         </div>
     </form>
 </div>

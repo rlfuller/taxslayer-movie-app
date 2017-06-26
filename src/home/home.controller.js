@@ -5,10 +5,6 @@
     $scope.reverse = false;
     $scope.movies = [];
 
-    function handleMovieDataError(data, status, headers, config) {
-        $log.log(data.error + " " + status);
-    }
-
     function moviesToList(movies) {
         if (!movies) {
             return [];
@@ -28,7 +24,7 @@
             .then(function(response){
                 $scope.movies = moviesToList(response.data);
                 console.log(response);
-            }, handleMovieDataError);
+            }, movieData.handleMovieDataError);
         };
 
         init();
@@ -47,7 +43,7 @@
                     } else {
                         // unable to delete movie
                     }
-                }, handleMovieDataError);
+                }, movieData.handleMovieDataError);
         }
 
     };

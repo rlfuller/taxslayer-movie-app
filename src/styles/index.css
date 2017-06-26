@@ -2,6 +2,14 @@ body {
   /*background-color: lightgrey; */
 }
 
+hr {
+  border-top: 3px double #8c8b8b;
+}
+
+.header, .movies-list, .add-movie-form {
+  margin: 0 25px;
+}
+
 .inner-addon {
   position: relative;
 }
@@ -12,13 +20,29 @@ body {
   pointer-events: none;
 }
 
-.left-addon .glyphicon { left: 0px;}
-.right-addon .glyphicon { right: 0px;}
+.left-addon .glyphicon { 
+  left: 0px;
+  }
+.right-addon .glyphicon { 
+  right: 0px;
+  }
 
-.left-addon input { padding-left: 25px;}
-.right-addon th { padding-right: 30px;}
+.left-addon input { 
+  padding-left: 25px;
+  }
+.right-addon th { 
+  padding-right: 30px;
+  }
 
-
+.glyphicon-plus-sign {
+  color: red;
+  font-size: 40px;
+  float: right;
+  z-index: 1;
+  top: -75px;
+  left: -50px;
+  
+}
 .delete {
   color: red;
   cursor: pointer;
@@ -31,10 +55,6 @@ body {
 #search {
   border-radius: 25px;
   width: 300px;
-}
-
-.add-movie-form {
-  width: 80%;
 }
 
 #hours {
@@ -52,4 +72,8 @@ body {
   padding-right: 50px;
   margin-top: 30px;
   float: right;
+}
+
+form {
+  margin-top: 30px;
 }
