@@ -4,7 +4,7 @@
         $scope.formData = {};
         $scope.years = [];
         var now = new Date();
-        for (var i = 1900; i <= now.getFullYear(); i++) {
+        for (var i = now.getFullYear(); i >= 1900; i--) {
             $scope.years.push(i);
         }
 

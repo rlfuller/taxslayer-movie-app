@@ -23,7 +23,7 @@ function inject() {
 
   const injectOptions = {
     ignorePath: [conf.paths.src, conf.paths.tmp],
-    addRootSlash: false
+    addRootSlash: true
   };
 
   return gulp.src(conf.path.src('index.html'))

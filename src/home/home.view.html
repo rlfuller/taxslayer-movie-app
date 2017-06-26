@@ -21,7 +21,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="movie in movies | filter: movieFilter | orderBy: sortBy:reverse">
-            <td><a href="/edit-movie" data-ng-click="setData(movie)">{{movie.name}}</a></td>
+            <td><a href="/edit-movie/{{movie._id}}">{{movie.name}}</a></td>
             <td>{{movie.releaseDt | date: "yyyy"}}</td>
             <td>{{movie.director}}</td>
             <td>{{movie.length | formatMovieLength}}</td>

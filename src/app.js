@@ -12,7 +12,7 @@
     controller: "addMovieController",
     templateUrl: "addMovie/addMovie.view.html"  
   })
-  .when("/edit-movie",{
+  .when("/edit-movie/:id", {
       controller: "editMovieController",
       templateUrl: "addMovie/addMovie.view.html"
   })

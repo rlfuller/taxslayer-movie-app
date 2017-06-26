@@ -1,39 +1,46 @@
 (function () {
-    var editMovieController = function ($scope, $location, $log, movieData) {
+    var editMovieController = function ($scope, $routeParams, $location, $log, movieData) {
 
-        var savedMovie = {};
-        savedMovie = movieData.get();
+        var currentMovie = {};
+        var id = $routeParams.id;
+
+        movieData.getOneMovie(id)
+            .then(function(resp){
+                if(resp.status === 200){
+                    //console.log(resp.data);
+                    currentMovie = resp.data;
+                    handleSavedMovieData(currentMovie);
+                }
+            }, movieData.handleMovieDataError);
         
-        savedMovie.year = new Date(savedMovie.releaseDt).getFullYear();
-        savedMovie.hours = Math.floor(savedMovie.length / 60);
-        savedMovie.minutes = Math.floor(savedMovie.length % 60);
-
-        $scope.formData = savedMovie;
+        function handleSavedMovieData(savedMovie) {
+            $scope.formData = {};
+            $scope.formData.name = savedMovie.name;
+            $scope.formData.director = savedMovie.director;
+            $scope.formData.year = new Date(savedMovie.releaseDt).getFullYear();
+            $scope.formData.hours = Math.floor(savedMovie.length / 60);
+            $scope.formData.minutes = Math.floor(savedMovie.length % 60);
+        }
         
         $scope.years = [];
         var now = new Date();
-        for (var i = 1900; i <= now.getFullYear(); i++) {
+        for (var i = now.getFullYear(); i >= 1900; i--) {
             $scope.years.push(i);
         }
-
-        // $scope.editMovie() = function(movie){
-
-        // };
 
         $scope.onSubmit = function($event) {
             $event.preventDefault();
             
-            var movie = {};
             var data = $scope.formData;
             data.minutes = data.minutes || 0;
             data.hours = data.hours || 0;
 
-            movie.length = data.minutes + (data.hours * 60);
-            movie.releaseDt = new Date(data.year + "/01/01").toISOString();
-            movie.name = data.name;
-            movie.director = data.director;
+            currentMovie.length = data.minutes + (data.hours * 60);
+            currentMovie.releaseDt = new Date(data.year + "/01/01").toISOString();
+            currentMovie.name = data.name;
+            currentMovie.director = data.director;
             
-            movieData.editMovie(movie)
+            movieData.editMovie(id, currentMovie)
                 .then(function(resp) {
                     if (resp.status === 200) {
                         // everything good, redirect
@@ -46,5 +53,5 @@
 
     }
     angular.module("movieApp")
-        .controller("editMovieController", ["$scope", "$location", "$log", "movieData", editMovieController]);
+        .controller("editMovieController", ["$scope", "$routeParams", "$location", "$log", "movieData", editMovieController]);
 })();

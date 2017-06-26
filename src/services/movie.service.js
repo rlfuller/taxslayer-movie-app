@@ -12,34 +12,27 @@
             return $http.post(apiBase + "/movie.json", data);
         }
 
-        var editMovie = function(data) {
-            return $http.put(apiBase + "/movie/" + data._id + ".json", data);
+        var editMovie = function(id, data) {
+            return $http.put(apiBase + "/movie/" + id + ".json", data);
+        }
+
+        var getOneMovie = function(id) {
+            return $http.get(apiBase + "/movie/" + id + ".json");
         }
 
         var handleMovieDataError = function(data, status, headers, config) {
             $log.log(data.error + " " + status);
         }
 
-        var savedMovieData = {};
-        function set(movie){
-            savedMovieData = movie;
-            console.log("reache");
-        };
-
-        function get(){
-            console.log("here");
-            console.log("savedMovieData", savedMovieData);
-            return savedMovieData;
-        }
 
         return {
             getMovies: getMovies,
+            getOneMovie: getOneMovie,
             deleteMovie: deleteMovie,
             addMovie: addMovie,
             handleMovieDataError: handleMovieDataError,
-            editMovie: editMovie,
-            set: set,
-            get: get
+            editMovie: editMovie
+            
         };
 
     };
