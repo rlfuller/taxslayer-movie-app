@@ -46,6 +46,11 @@
                 }, movieData.handleMovieDataError);
         }
 
+
+        $scope.setData = function(movie){
+            movieData.set(movie);
+        };
+
     };
   
     angular.module("movieApp")
